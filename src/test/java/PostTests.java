@@ -45,7 +45,7 @@ public class PostTests {
     }
 
     @Test(dataProvider = "postId")
-    public void getPostByQueryIdTest(Integergit id) {
+    public void getPostByQueryIdTest(Integer id) {
         Post post = postActions.getPostByQueryId(id);
         assertThat(post.getId(), equalTo(id));
         assertThat(post.getTitle(), is(not(emptyString())));
