@@ -26,12 +26,12 @@ public class PostTests {
     @Test
     public void getAllPostsTest() {
         List<Post> posts = postActions.getAllPosts();
-        for (Post post : posts) {
-            assertThat(post.getUserId(), is(notNullValue()));
-            assertThat(post.getId(), is(notNullValue()));
-            assertThat(post.getTitle(), is(not(emptyString())));
-            assertThat(post.getBody(), is(not(emptyString())));
-        }
+
+        assertThat(posts, everyItem(hasProperty("userId", is(notNullValue()))));
+        assertThat(posts, everyItem(hasProperty("id", is(notNullValue()))));
+        assertThat(posts, everyItem(hasProperty("title", is(notNullValue()))));
+        assertThat(posts, everyItem(hasProperty("body", is(notNullValue()))));
+
     }
 
     @Test(dataProvider = "postId")
