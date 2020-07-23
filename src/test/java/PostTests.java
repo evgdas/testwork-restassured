@@ -36,12 +36,9 @@ public class PostTests {
 
     @Test(dataProvider = "postId")
     public void getPostsByParamIdTest(Integer id) {
-        List<Post> postList = postActions.getPostByParamId(id);
-        for (Post post : postList) {
-            assertThat(post.getId(), equalTo(id));
-            assertThat(post.getTitle(), is(not(emptyString())));
-            assertThat(post.getBody(), is(not(emptyString())));
-        }
+        List<Post> postsList = postActions.getPostByParamId(id);
+        assertThat(postsList, everyItem(hasProperty("id", is(equalTo(id)))));
+
     }
 
     @Test(dataProvider = "postId")
