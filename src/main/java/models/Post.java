@@ -1,7 +1,6 @@
 package models;
 
 public class Post {
-
     private Integer userId;
     private Integer id;
     private String title;
