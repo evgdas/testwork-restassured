@@ -31,7 +31,6 @@ public class PostTests {
         assertThat(posts, everyItem(hasProperty("id", is(notNullValue()))));
         assertThat(posts, everyItem(hasProperty("title", is(notNullValue()))));
         assertThat(posts, everyItem(hasProperty("body", is(notNullValue()))));
-
     }
 
     @Test(dataProvider = "postId")
@@ -39,7 +38,6 @@ public class PostTests {
         List<Post> postsList = postActions.getPostByParamId(id);
         
         assertThat(postsList, everyItem(hasProperty("id", is(equalTo(id)))));
-
     }
 
     @Test(dataProvider = "postId")
@@ -50,6 +48,4 @@ public class PostTests {
         assertThat(post.getTitle(), is(not(emptyString())));
         assertThat(post.getBody(), is(not(emptyString())));
     }
-
-
 }
