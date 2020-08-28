@@ -9,14 +9,11 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import models.Post;
-
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-
 public class PostActions {
-
     private RequestSpecification requestSpecification;
     private ResponseSpecification responseSpecification;
 
@@ -27,13 +24,11 @@ public class PostActions {
                 .log(LogDetail.ALL)
                 .addFilter(new AllureRestAssured())
                 .build();
-
         responseSpecification = new ResponseSpecBuilder()
                 .log(LogDetail.ALL)
                 .expectStatusCode(200)
                 .build();
     }
-
 
     public List<Post> getAllPosts() {
         return given(requestSpecification)
@@ -49,7 +44,6 @@ public class PostActions {
                 .get("/posts" + "/{id}")
                 .then().spec(responseSpecification)
                 .extract().body().as(Post.class);
-
     }
 
     public List<Post> getPostByParamId(Integer id) {
@@ -58,7 +52,5 @@ public class PostActions {
                 .get("/posts")
                 .then().spec(responseSpecification)
                 .extract().body().jsonPath().getList("", Post.class);
-
     }
-
 }
